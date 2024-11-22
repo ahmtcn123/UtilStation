@@ -1,0 +1,54 @@
+{
+    "name": "UtilStation - Your one stop shop for all tools",
+    "short_name": "UtilStation",
+    "description": "UtilStation offers a wide range of tools including JSON converters, unit converters, and more. Simplify your coding tasks with our user-friendly tools.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1d232a",
+    "theme_color": "#3894A3",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/iconPacks/favicon@192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/iconPacks/favicon@0.5.png",
+            "sizes": "250x250",
+            "type": "image/png"
+        },
+        {
+            "src": "/iconPacks/favicon@0.75.png",
+            "sizes": "375x375",
+            "type": "image/png"
+        },
+        {
+            "src": "/iconPacks/favicon@1.png",
+            "sizes": "500x500",
+            "type": "image/png"
+        },
+        {
+            "src": "/iconPacks/favicon@512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "/iconPacks/favicon@1.5.png",
+            "sizes": "750x750",
+            "type": "image/png"
+        },
+        {
+            "src": "/iconPacks/favicon@2.png",
+            "sizes": "1000x1000",
+            "type": "image/png"
+        }
+    ],
+    "lang": "en",
+    "scope": "/",
+    "categories": [
+        "productivity",
+        "tools",
+        "utilities"
+    ]
+}

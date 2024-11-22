@@ -1,0 +1,130 @@
+{
+    "mainCategories": [
+        {
+            "name": "Programing Tools",
+            "description": "Various tools for programmers.",
+            "subCategories": [
+                {
+                    "name": "Code Formatters",
+                    "description": "Various code formatters for different languages.",
+                    "enabled": true,
+                    "tools": [
+                        {
+                            "name": "JSON Formatter",
+                            "description": "Easily minify or beautify JSON data.",
+                            "version": "1.0.0",
+                            "enabled": true,
+                            "mobileSupported": true,
+                            "urlName": "json-formatter",
+                            "tags": [
+                                "json",
+                                "formatter",
+                                "beautify",
+                                "minify"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "tools": [
+                {
+                    "name": "Cron Expression Parser",
+                    "description": "Parse cron expressions to human readable format",
+                    "version": "1.0.0",
+                    "enabled": true,
+                    "mobileSupported": true,
+                    "tags": [
+                        "cron",
+                        "server",
+                        "parser",
+                        "devops"
+                    ]
+                },
+                {
+                    "name": "Base64 Encoder/Decoder",
+                    "urlName": "base64-encoder-decoder",
+                    "description": "Encode and decode base64 strings or files.",
+                    "version": "1.0.0",
+                    "enabled": true,
+                    "mobileSupported": true,
+                    "tags": [
+                        "base64",
+                        "encoder",
+                        "decoder"
+                    ]
+                },
+                {
+                    "name": "UUID Generator",
+                    "urlName": "uuid-generator",
+                    "description": "Generate random UUIDs.",
+                    "version": "1.0.0",
+                    "enabled": true,
+                    "mobileSupported": true,
+                    "tags": [
+                        "guid",
+                        "generator",
+                        "uuid",
+                        "random",
+                        "database"
+                    ]
+                },
+                {
+                    "name": "Markdown Editor/Viewer",
+                    "urlName": "markdown-editor-viewer",
+                    "description": "Preview and edit markdown files.",
+                    "version": "1.0.0",
+                    "enabled": true,
+                    "mobileSupported": true,
+                    "tags": [
+                        "markdown",
+                        "editor",
+                        "viewer",
+                        "preview"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Text Utilities",
+            "description": "Various tools for text manipulation.",
+            "tools": [
+                {
+                    "name": "Password Generator",
+                    "description": "Generate strong and secure passwords.",
+                    "version": "1.0.0",
+                    "enabled": true,
+                    "mobileSupported": true,
+                    "tags": [
+                        "password",
+                        "generator",
+                        "random"
+                    ]
+                },
+                {
+                    "name": "Hidden Character Cleaner",
+                    "description": "Remove hidden characters from text.",
+                    "version": "0.1.0",
+                    "enabled": true,
+                    "mobileSupported": true,
+                    "tags": [
+                        "character",
+                        "cleaner",
+                        "ascii"
+                    ]
+                },
+                {
+                    "name": "Case Converter",
+                    "description": "Convert text to upper case, lower case, etc.",
+                    "version": "1.0.0",
+                    "enabled": true,
+                    "mobileSupported": true,
+                    "tags": [
+                        "text",
+                        "converter",
+                        "ascii"
+                    ]
+                }
+            ]
+        }
+    ]
+}
