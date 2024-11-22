@@ -1,7 +1,6 @@
 import { LinksFunction, MetaFunction } from "@remix-run/cloudflare";
 import clsx from "clsx";
 import DOMPurify from "dompurify";
-import hljs from "highlight.js";
 import { marked } from "marked";
 import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
@@ -11,7 +10,6 @@ import ToolPage from "~/components/ToolPage";
 import useToolInfo from "~/hooks/useToolInfo";
 import { CommonLinksGenerator, CommonMetaGenerator } from "~/utils/CommonCodeGenerators";
 import theme from "../../../tailwind.config";
-//import "highlight.js/styles/atom-one-dark-reasonable.min.css";
 
 export const meta: MetaFunction = ({ location }) => {
     return [
@@ -34,6 +32,7 @@ export const links: LinksFunction = () => {
 
 let editor: null | ReturnType<typeof import("ace-builds")["edit"]> = null;
 let ace: null | typeof import("ace-builds") = null;
+let hljs: null | typeof import("highlight.js")['default'] = null;
 
 export default function MarkdownEditorViewer() {
     //hooks
@@ -90,6 +89,7 @@ export default function MarkdownEditorViewer() {
 
     useEffect(() => {
         async function renderMarkdown() {
+            hljs = (await import("highlight.js")).default;
             const renderer = new marked.Renderer();
 
             marked.setOptions({
@@ -120,12 +120,12 @@ export default function MarkdownEditorViewer() {
 
             renderer.code = function ({ text, lang }) {
                 if (lang) {
-                    const validLanguage = hljs.getLanguage(lang) ? lang : "plaintext";
-                    return `<pre><code class="hljs ${validLanguage}">${hljs.highlight(text, {
+                    const validLanguage = hljs?.getLanguage(lang) ? lang : "plaintext";
+                    return `<pre><code class="hljs ${validLanguage}">${hljs!.highlight(text, {
                         language: validLanguage,
                     }).value}</code></pre>`;
                 }
-                return `<pre><code class="hljs">${hljs.highlightAuto(text).value}</code></pre>`;
+                return `<pre><code class="hljs">${hljs!.highlightAuto(text).value}</code></pre>`;
             }
 
             try {
