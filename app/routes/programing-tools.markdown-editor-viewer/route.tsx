@@ -11,7 +11,7 @@ import ToolPage from "~/components/ToolPage";
 import useToolInfo from "~/hooks/useToolInfo";
 import { CommonLinksGenerator, CommonMetaGenerator } from "~/utils/CommonCodeGenerators";
 import theme from "../../../tailwind.config";
-import "highlight.js/styles/atom-one-dark-reasonable.min.css";
+//import "highlight.js/styles/atom-one-dark-reasonable.min.css";
 
 export const meta: MetaFunction = ({ location }) => {
     return [
@@ -130,6 +130,7 @@ export default function MarkdownEditorViewer() {
 
             try {
                 renderedHTML = await marked(editorText);
+                await import("highlight.js/styles/atom-one-dark-reasonable.min.css");
                 //! TODO: This causes target="_blank" to be removed figure out why
                 renderedHTML = DOMPurify.sanitize(renderedHTML);
             } catch (e) {
