@@ -72,7 +72,7 @@
                     "name": "Markdown Editor/Viewer",
                     "urlName": "markdown-editor-viewer",
                     "description": "Preview and edit markdown files.",
-                    "version": "1.0.0",
+                    "version": "0.1.0-beta",
                     "enabled": true,
                     "mobileSupported": true,
                     "tags": [

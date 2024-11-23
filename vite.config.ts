@@ -4,6 +4,7 @@ import {
 } from "@remix-run/dev";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import { visualizer } from "rollup-plugin-visualizer";
 
 export default defineConfig({
   plugins: [
@@ -16,6 +17,13 @@ export default defineConfig({
       },
     }),
     tsconfigPaths(),
+    visualizer({
+      template: "treemap", // or sunburst
+      open: true,
+      gzipSize: true,
+      brotliSize: true,
+      filename: "analyse.html", // will be saved in project's root
+    }),
   ],
   define: {
     NODE_ENV: JSON.stringify(process.env.NODE_ENV),

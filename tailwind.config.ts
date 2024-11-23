@@ -10,6 +10,50 @@ export default {
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
       },
+      typography: {
+        white: {
+          css: {
+            color: '#ffffff',
+            'h1, h2, h3, h4, h5, h6': {
+              color: '#ffffff',
+            },
+            a: {
+              color: '#ffffff',
+              '&:hover': {
+                color: '#ffffff', // Optional: Keep links white on hover
+              },
+            },
+            strong: {
+              color: '#ffffff',
+            },
+            p: {
+              color: '#ffffff',
+            },
+            li: {
+              color: '#ffffff',
+            },
+            ol: {
+              color: '#ffffff',
+            },
+            ul: {
+              color: '#ffffff',
+            },
+            blockquote: {
+              color: '#ffffff',
+            },
+            code: {
+              color: '#ffffff',
+            },
+            pre: {
+              color: '#ffffff',
+              backgroundColor: '#000000',
+            },
+            "li::marker": {
+              color: '#ffffff',
+            },
+          },
+        },
+      },
     },
     screens: {
       "xsm": "512px",

@@ -32,7 +32,7 @@ export const links: LinksFunction = () => {
 
 let editor: null | ReturnType<typeof import("ace-builds")["edit"]> = null;
 let ace: null | typeof import("ace-builds") = null;
-let hljs: null | typeof import("highlight.js")['default'] = null;
+//let hljs: null | typeof import("highlight.js")['default'] = null;
 let marked: null | typeof import("marked")['marked'] = null;
 let DOMPurify: null | typeof import("dompurify")['default'] = null;
 
@@ -93,7 +93,7 @@ export default function MarkdownEditorViewer() {
 
     useEffect(() => {
         async function renderMarkdown() {
-            hljs = (await import("highlight.js")).default;
+            //hljs = (await import("highlight.js")).default;
             const renderer = new marked!.Renderer();
 
             marked!.setOptions({
@@ -121,20 +121,25 @@ export default function MarkdownEditorViewer() {
 
                 return `<a target="_blank" rel="nofollow" href="/leaving-utilstation?url=${oldHref[1]}">${inside[1]}</a>`;
             }
+            /* 
+                        renderer.code = function ({ text, lang }) {
+                            if (lang) {
+                                const validLanguage = hljs?.getLanguage(lang) ? lang : "plaintext";
+                                return `<pre><code class="hljs ${validLanguage}">${hljs!.highlight(text, {
+                                    language: validLanguage,
+                                }).value}</code></pre>`;
+                            }
+                            return `<pre><code class="hljs">${hljs!.highlightAuto(text).value}</code></pre>`;
+                        }
+             */
 
-            renderer.code = function ({ text, lang }) {
-                if (lang) {
-                    const validLanguage = hljs?.getLanguage(lang) ? lang : "plaintext";
-                    return `<pre><code class="hljs ${validLanguage}">${hljs!.highlight(text, {
-                        language: validLanguage,
-                    }).value}</code></pre>`;
-                }
-                return `<pre><code class="hljs">${hljs!.highlightAuto(text).value}</code></pre>`;
+            renderer.code = function ({ text }) {
+                return `<pre><code>${text}</code></pre>`;
             }
 
             try {
                 renderedHTML = await marked!(editorText);
-                await import("highlight.js/styles/atom-one-dark-reasonable.min.css");
+                //await import("highlight.js/styles/atom-one-dark-reasonable.min.css");
                 //! TODO: This causes target="_blank" to be removed figure out why
                 renderedHTML = DOMPurify!.sanitize(renderedHTML);
             } catch (e) {
@@ -193,9 +198,10 @@ export default function MarkdownEditorViewer() {
                         <button
                             onClick={onTabSwitch("editor")}
                             role="tab"
-                            className={clsx("tab", {
+                            className={clsx("tab text-secondary", {
                                 "tab-active": viewSelection === "editor",
                                 "text-primary": viewSelection === "editor",
+                                "text-secondary": viewSelection === "viewer",
                             })}
                         >
                             Edit
@@ -206,6 +212,7 @@ export default function MarkdownEditorViewer() {
                             className={clsx("tab", {
                                 "tab-active": viewSelection === "viewer",
                                 "text-primary": viewSelection === "viewer",
+                                "text-secondary": viewSelection === "editor",
                             })}
                         >
                             Preview
@@ -230,11 +237,11 @@ export default function MarkdownEditorViewer() {
                         </div>
                     </div>
                     {/* Preview Field */}
-                    <div className={clsx("h-[510px] overflow-y-auto bg-[#24292e]", {
+                    <div className={clsx("h-[510px] overflow-y-auto", {
                         "hidden": viewSelection === "editor",
                         "block": viewSelection === "viewer"
                     })}>
-                        <article className="prose">
+                        <article className="prose prose-white">
                             <div className="markdown-body p-4" dangerouslySetInnerHTML={{ __html: text }} />
                         </article>
                     </div>
