@@ -1,7 +1,7 @@
 import { LinksFunction, MetaFunction } from "@remix-run/cloudflare";
 import clsx from "clsx";
-import DOMPurify from "dompurify";
-import { marked } from "marked";
+//import DOMPurify from "dompurify";
+//import { marked } from "marked";
 import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import ToolArticleContainer from "~/components/ToolArticleContainer";
@@ -33,6 +33,8 @@ export const links: LinksFunction = () => {
 let editor: null | ReturnType<typeof import("ace-builds")["edit"]> = null;
 let ace: null | typeof import("ace-builds") = null;
 let hljs: null | typeof import("highlight.js")['default'] = null;
+let marked: null | typeof import("marked")['marked'] = null;
+let DOMPurify: null | typeof import("dompurify")['default'] = null;
 
 export default function MarkdownEditorViewer() {
     //hooks
@@ -63,6 +65,8 @@ export default function MarkdownEditorViewer() {
         const loadAce = async () => {
             if (!editorRef.current) return;
             ace = await import("ace-builds/src-noconflict/ace");
+            marked = (await import("marked")).marked;
+            DOMPurify = (await import("dompurify")).default;
 
             await import("ace-builds/src-noconflict/mode-markdown");
             const themeMonokai = await import("ace-builds/src-noconflict/theme-github_dark");
@@ -90,9 +94,9 @@ export default function MarkdownEditorViewer() {
     useEffect(() => {
         async function renderMarkdown() {
             hljs = (await import("highlight.js")).default;
-            const renderer = new marked.Renderer();
+            const renderer = new marked!.Renderer();
 
-            marked.setOptions({
+            marked!.setOptions({
                 renderer: renderer,
             });
 
@@ -129,10 +133,10 @@ export default function MarkdownEditorViewer() {
             }
 
             try {
-                renderedHTML = await marked(editorText);
+                renderedHTML = await marked!(editorText);
                 await import("highlight.js/styles/atom-one-dark-reasonable.min.css");
                 //! TODO: This causes target="_blank" to be removed figure out why
-                renderedHTML = DOMPurify.sanitize(renderedHTML);
+                renderedHTML = DOMPurify!.sanitize(renderedHTML);
             } catch (e) {
                 renderedHTML = `<pre>${e}</pre>`;
             }
