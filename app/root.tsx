@@ -29,7 +29,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const theme = loaderData?.theme;
 
   useEffect(() => {
-    gtag.pageview(location.pathname, "G-6KYTN9KQ0D");
+    gtag.pageview(location.pathname, "G-JQQPBP3L4F");
   }, [location]);
 
 
@@ -52,7 +52,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <>
             <script
               async
-              src={`https://www.googletagmanager.com/gtag/js?id=G-6KYTN9KQ0D`}
+              src={`https://www.googletagmanager.com/gtag/js?id=G-JQQPBP3L4F`}
             />
             <script
               async
@@ -63,7 +63,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
 
-                gtag('config', 'G-6KYTN9KQ0D', {
+                gtag('config', 'G-JQQPBP3L4F', {
                   page_path: window.location.pathname,
                 });
               `,
